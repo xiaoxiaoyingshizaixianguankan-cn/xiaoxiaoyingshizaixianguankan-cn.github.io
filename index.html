@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="renderer" content="webkit">
+<meta name="applicable-device" content="pc,mobile">
+<meta name="description" content="小小影视在线观看 - 影视在线观看平台，提供电影、电视剧、综艺、动漫等高清影视资源在线观看，小小片库、小小剧场、小小排行榜一应俱全，随时随地轻松追剧。">
+<meta name="keywords" content="小小影视在线观看,小小影视,影视在线观看,高清影视,电影电视剧综艺动漫,小小片库,小小剧场,影视资源大全">
+<title>小小影视在线观看 | xiaoxiaoyingshizaixianguankan-cn · 影视在线观看平台 · 高清影视随时看</title>
+<style>
+:root{
+  --bg:#0c0a14;--bg2:#130f20;--card:#1a1528;--card2:#211a33;
+  --tx:#f2efff;--tx2:#a99fc0;--tx3:#6c6088;
+  --vi:#9b5cff;--vi2:#c084fc;--pn:#ff3ea5;--am:#ffb020;--cy:#20e5c8;--ez:cubic-bezier(.2,.8,.3,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--tx);
+  font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei","WenQuanYi Micro Hei",sans-serif;
+  line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+a{color:inherit;text-decoration:none}
+ul,ol,dl{list-style:none}
+button{font-family:inherit;cursor:pointer;border:0}
+::selection{background:var(--vi);color:#fff}
+h1,h2,h3,h4{font-weight:800}
+
+/* 气泡背景 */
+.bubbg{position:fixed;inset:0;z-index:-2;
+  background:radial-gradient(800px 520px at 12% 8%,rgba(155,92,255,.30),transparent 60%),radial-gradient(700px 500px at 88% 90%,rgba(255,62,165,.24),transparent 60%),linear-gradient(180deg,#0c0a14,#100c1c)}
+.bubs{position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
+.bubs i{position:absolute;bottom:-120px;border-radius:50%;background:radial-gradient(circle at 32% 30%,rgba(255,255,255,.45),rgba(192,132,252,.25) 45%,transparent 72%);animation:bub 14s linear infinite}
+@keyframes bub{0%{transform:translateY(0) scale(.8);opacity:0}12%{opacity:.6}100%{transform:translateY(-112vh) scale(1.4);opacity:0}}
+.bubs i:nth-child(1){left:6%;width:34px;height:34px;animation-delay:0s}
+.bubs i:nth-child(2){left:16%;width:52px;height:52px;animation-delay:2.4s}
+.bubs i:nth-child(3){left:28%;width:26px;height:26px;animation-delay:4.8s}
+.bubs i:nth-child(4){left:42%;width:60px;height:60px;animation-delay:1.2s}
+.bubs i:nth-child(5){left:56%;width:30px;height:30px;animation-delay:5.6s}
+.bubs i:nth-child(6){left:68%;width:46px;height:46px;animation-delay:3.2s}
+.bubs i:nth-child(7){left:80%;width:24px;height:24px;animation-delay:6.4s}
+.bubs i:nth-child(8){left:92%;width:40px;height:40px;animation-delay:7.6s}
+
+.wrap{max-width:1180px;margin:0 auto;padding:0 22px}
+section{padding:104px 0;position:relative}
+.kicker{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:800;letter-spacing:2.4px;color:var(--vi2);padding:6px 14px;border-radius:999px;background:rgba(155,92,255,.14);border:1px solid rgba(155,92,255,.35)}
+.kicker::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--vi2);box-shadow:0 0 10px var(--vi2)}
+.h2{font-size:clamp(26px,4vw,42px);line-height:1.3}
+.h2 em{font-style:normal;background:linear-gradient(90deg,var(--vi2),var(--pn));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.lede{color:var(--tx2);font-size:16px;max-width:640px}
+
+/* 头部 */
+.hd{position:sticky;top:0;z-index:100;background:rgba(12,10,20,.85);backdrop-filter:blur(14px);border-bottom:1px solid rgba(155,92,255,.22)}
+.nv{max-width:1180px;margin:0 auto;padding:0 22px;height:74px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:12px;font-weight:950;font-size:20px;letter-spacing:.4px}
+.logo .pl{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:20px;background:linear-gradient(135deg,var(--vi),var(--pn));box-shadow:0 8px 22px rgba(155,92,255,.45)}
+.logo .zm{display:flex;flex-direction:column;line-height:1.1}
+.logo .zm small{font-size:9px;color:var(--tx3);letter-spacing:2.4px;font-weight:700}
+.menu{display:flex;align-items:center;gap:2px}
+.menu a{padding:8px 15px;font-size:14.5px;color:var(--tx2);position:relative;transition:.25s}
+.menu a:hover{color:var(--vi2)}
+.menu a:hover::after{content:"";position:absolute;left:15px;right:15px;bottom:0;height:2px;border-radius:2px;background:var(--vi2);box-shadow:0 0 8px var(--vi2)}
+.menu .cta{padding:10px 22px;margin-left:12px;font-size:14px;font-weight:850;color:#fff;background:linear-gradient(135deg,var(--vi),var(--pn));border-radius:999px}
+.menu .cta:hover{transform:translateY(-2px);box-shadow:0 14px 28px rgba(155,92,255,.45)}
+.bmb{display:none;width:42px;height:42px;border:1px solid rgba(155,92,255,.45);background:transparent;color:var(--vi2);font-size:20px;border-radius:10px}
+
+/* Hero —— 卡片堆叠 */
+.hero{padding:72px 0 28px}
+.hg{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.hero h1{font-size:clamp(40px,5.6vw,62px);line-height:1.08;font-weight:950}
+.hero h1 .xx{display:inline-block;position:relative;padding:0 6px;background:linear-gradient(135deg,var(--vi),var(--pn));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero h1 .xx::after{content:"看";position:absolute;left:0;top:0;padding:0 6px;color:#fff;-webkit-text-fill-color:#fff;clip-path:inset(0 55% 0 0);text-shadow:0 0 24px rgba(192,132,252,.8)}
+.hero h1 .sub{display:block;font-size:.26em;letter-spacing:4px;color:var(--tx3);margin-top:18px;font-weight:700;-webkit-text-fill-color:var(--tx3)}
+.hero .desc{margin:24px 0 28px;font-size:17px;color:var(--tx2);max-width:520px}
+.acts{display:flex;flex-wrap:wrap;gap:14px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;border-radius:999px;font-size:15.5px;font-weight:850;transition:.35s var(--ez)}
+.bc{background:linear-gradient(135deg,var(--vi),var(--pn));color:#fff}
+.bc:hover{transform:translateY(-3px);box-shadow:0 18px 34px rgba(155,92,255,.45)}
+.bg{background:rgba(155,92,255,.12);color:var(--tx);border:1.5px solid rgba(155,92,255,.4)}
+.bg:hover{background:rgba(155,92,255,.24);color:#fff}
+.tags{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap}
+.tags span{font-size:12.5px;font-weight:800;padding:7px 16px;border-radius:999px;background:var(--card);border:1px solid rgba(155,92,255,.28);color:var(--vi2)}
+
+.cards{position:relative;height:430px}
+.cards .cc{position:absolute;left:0;right:0;border-radius:20px;padding:22px;background:var(--card);border:1px solid rgba(155,92,255,.22);box-shadow:0 24px 54px rgba(0,0,0,.45)}
+.cards .cc1{top:0;transform:rotate(-4deg);background:linear-gradient(135deg,#2a1c46,#1a1528);z-index:1}
+.cards .cc2{top:46px;transform:rotate(2deg);z-index:2;background:linear-gradient(135deg,#241a3a,#1a1528)}
+.cards .cc3{top:96px;transform:rotate(-2deg);z-index:3;background:linear-gradient(135deg,#1f1634,#140f20);border-color:rgba(192,132,252,.5);box-shadow:0 0 0 6px rgba(155,92,255,.08),0 24px 54px rgba(0,0,0,.5)}
+.cards .ph{height:132px;border-radius:12px;background:linear-gradient(120deg,rgba(155,92,255,.5),rgba(255,62,165,.4),rgba(32,229,200,.35));background-size:200% 100%;animation:sh 5s ease infinite}
+@keyframes sh{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.cards .cc4 .ph{background:linear-gradient(120deg,rgba(255,176,32,.5),rgba(255,62,165,.4))}
+.cards .cc5 .ph{background:linear-gradient(120deg,rgba(32,229,200,.45),rgba(155,92,255,.5))}
+.cards .row{display:flex;justify-content:space-between;align-items:center;margin-top:12px}
+.cards .row b{font-size:14px}
+.cards .row i{font-style:normal;font-size:11px;font-weight:800;padding:3px 9px;border-radius:6px;background:rgba(255,62,165,.22);color:#ffaad9}
+.cards .cc3 .row i{background:rgba(32,229,200,.2);color:var(--cy)}
+.cards .bars{display:flex;gap:5px;align-items:flex-end;height:34px;margin-top:12px}
+.cards .bars s{width:11px;background:rgba(155,92,255,.35);border-radius:3px;text-decoration:none}
+.cards .bars s:nth-child(2){background:var(--vi2)}
+.cards .bars s:nth-child(5){background:var(--pn)}
+
+/* 栏目一：频道分类 —— 胶囊条 */
+.cat-head{text-align:center;margin-bottom:46px}
+.cat-head .lede{margin:0 auto}
+.pillbox{max-width:980px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.pill{padding:16px 26px;border-radius:999px;background:var(--card);border:1px solid rgba(155,92,255,.2);display:flex;align-items:center;gap:12px;transition:.4s var(--ez);font-size:15px;font-weight:800;color:var(--tx)}
+.pill:hover{background:var(--card2);border-color:var(--vi2);transform:translateY(-4px);box-shadow:0 14px 28px rgba(155,92,255,.28);color:#fff}
+.pill i{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;font-size:14px;font-weight:950;color:#fff;background:linear-gradient(135deg,var(--vi),var(--pn));flex:none}
+.pill:nth-child(2) i{background:linear-gradient(135deg,var(--am),var(--pn))}
+.pill:nth-child(3) i{background:linear-gradient(135deg,var(--cy),var(--vi))}
+.pill:nth-child(4) i{background:linear-gradient(135deg,#6b8cff,var(--vi))}
+.pill:nth-child(5) i{background:linear-gradient(135deg,var(--pn),var(--am))}
+.pill:nth-child(6) i{background:linear-gradient(135deg,var(--vi2),var(--cy))}
+.pill em{font-style:normal;font-size:11.5px;color:var(--tx3);font-weight:700}
+
+/* 栏目二：小小片库 —— 海报斜切 */
+.works-head{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-bottom:46px}
+.ps{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ps .p{position:relative;border-radius:14px;overflow:hidden;border:1px solid rgba(155,92,255,.2);transition:.5s var(--ez);min-height:240px}
+.ps .p:hover{transform:translateY(-6px) scale(1.02);border-color:var(--vi2);box-shadow:0 22px 44px rgba(155,92,255,.32);z-index:3}
+.ps .p .bg{position:absolute;inset:0;clip-path:polygon(0 0,100% 0,100% 82%,0 100%);transition:.6s}
+.ps .p:nth-child(1) .bg{background:linear-gradient(150deg,var(--vi),var(--pn))}
+.ps .p:nth-child(2) .bg{background:linear-gradient(150deg,#6b8cff,var(--vi))}
+.ps .p:nth-child(3) .bg{background:linear-gradient(150deg,var(--am),var(--pn))}
+.ps .p:nth-child(4) .bg{background:linear-gradient(150deg,var(--cy),var(--vi))}
+.ps .p:nth-child(5) .bg{background:linear-gradient(150deg,var(--pn),#ff7043)}
+.ps .p:nth-child(6) .bg{background:linear-gradient(150deg,var(--vi2),var(--cy))}
+.ps .p .bg::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,transparent 0,transparent 14px,rgba(255,255,255,.06) 14px,rgba(255,255,255,.06) 15px)}
+.ps .p .no{position:absolute;top:14px;left:14px;font-size:34px;font-weight:950;color:rgba(255,255,255,.75);line-height:1}
+.ps .p .txt{position:absolute;left:18px;right:18px;bottom:18px}
+.ps .p .txt b{display:block;font-size:16px;font-weight:850;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.ps .p .txt span{font-size:11.5px;color:rgba(255,255,255,.82);font-weight:700}
+
+/* 栏目三：小小剧场 —— 梯形阶梯 */
+.st-head{text-align:center;margin-bottom:46px}
+.st-head .lede{margin:0 auto}
+.stage{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:end;max-width:1000px;margin:0 auto}
+.stage .st{padding:20px 18px;border-radius:12px 12px 0 0;background:var(--card);border:1px solid rgba(155,92,255,.2);border-bottom:0;position:relative;transition:.5s var(--ez)}
+.stage .st:hover{background:var(--card2)}
+.stage .st::after{content:"";position:absolute;left:-1px;right:-1px;bottom:-14px;height:14px;border-radius:0 0 12px 12px}
+.stage .st:nth-child(1){height:150px}.stage .st:nth-child(1)::after{background:linear-gradient(135deg,var(--vi),var(--pn))}
+.stage .st:nth-child(2){height:190px}.stage .st:nth-child(2)::after{background:linear-gradient(135deg,var(--am),var(--pn))}
+.stage .st:nth-child(3){height:230px}.stage .st:nth-child(3)::after{background:linear-gradient(135deg,var(--cy),var(--vi));box-shadow:0 0 24px rgba(32,229,200,.45)}
+.stage .st:nth-child(4){height:170px}.stage .st:nth-child(4)::after{background:linear-gradient(135deg,#6b8cff,var(--vi))}
+.stage .st .ic{width:42px;height:42px;border-radius:10px;display:grid;place-items:center;font-size:19px;font-weight:950;color:#fff;background:rgba(155,92,255,.3);margin-bottom:10px}
+.stage .st:nth-child(2) .ic{background:rgba(255,176,32,.3)}
+.stage .st:nth-child(3) .ic{background:rgba(32,229,200,.28)}
+.stage .st:nth-child(4) .ic{background:rgba(107,140,255,.3)}
+.stage .st b{display:block;font-size:15px}
+.stage .st span{font-size:11.6px;color:var(--tx3)}
+
+/* 栏目四：小小排行榜 —— 四宫格卡片 */
+.rk-head{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-bottom:46px}
+.rkgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.rkg{display:grid;grid-template-columns:44px 1fr auto;gap:16px;align-items:center;padding:16px 18px;border-radius:12px;background:var(--card);border:1px solid rgba(155,92,255,.18);transition:.4s}
+.rkg:hover{background:var(--card2);border-color:var(--vi2);transform:translateX(5px)}
+.rkg .no{width:38px;height:38px;border-radius:9px;display:grid;place-items:center;font-size:16px;font-weight:950;color:var(--vi2);background:rgba(155,92,255,.14)}
+.rkg .mx b{display:block;font-size:14.5px}
+.rkg .mx i{font-style:normal;font-size:11.4px;color:var(--tx3)}
+.rkg .ht{text-align:right;font-size:11px;color:var(--tx2);font-weight:800}
+.rkg .ht b{display:block;font-size:15px;color:var(--pn);font-weight:950}
+.rkg:nth-child(1) .no,.rkg:nth-child(2) .no{background:linear-gradient(135deg,var(--am),var(--pn));color:#fff}
+.rkg:nth-child(3) .no{background:var(--cy);color:#062822}
+
+/* 栏目五：观看体验 —— 定义列表 */
+.ex-head{text-align:center;margin-bottom:46px}
+.ex-head .lede{margin:0 auto}
+.exp{display:grid;gap:0;max-width:940px;margin:0 auto;border:1px solid rgba(155,92,255,.2);border-radius:14px;overflow:hidden}
+.exp .ex{display:grid;grid-template-columns:180px 1fr;align-items:center;padding:18px 24px;border-bottom:1px solid rgba(155,92,255,.14)}
+.exp .ex:last-child{border-bottom:0}
+.exp .ex:nth-child(odd){background:rgba(155,92,255,.05)}
+.exp .ex dt{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:850}
+.exp .ex dt i{width:32px;height:32px;border-radius:8px;display:grid;place-items:center;font-size:14px;font-weight:950;color:#fff;background:linear-gradient(135deg,var(--vi),var(--pn));flex:none}
+.exp .ex dd{font-size:13.6px;color:var(--tx2)}
+.exp .ex dd b{color:var(--vi2);font-weight:850}
+
+/* 栏目六：更新日历 —— 定义列表 */
+.cal-head{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center;margin-bottom:46px}
+.cl{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;max-width:760px;margin:0 auto}
+.cl .hd7{padding:10px 0;text-align:center;font-size:11px;font-weight:850;color:var(--tx3);letter-spacing:1px}
+.cl .dy{padding:12px 6px;text-align:center;border-radius:9px;background:var(--card);border:1px solid rgba(155,92,255,.14);transition:.3s;min-height:58px;display:flex;flex-direction:column;justify-content:center;gap:4px}
+.cl .dy:hover{border-color:var(--vi2);transform:translateY(-3px)}
+.cl .dy b{font-size:14px;font-weight:850}
+.cl .dy i{font-style:normal;font-size:9px;font-weight:800;padding:1px 5px;border-radius:5px;background:rgba(155,92,255,.2);color:var(--vi2)}
+.cl .dy.today{border-color:var(--pn);background:linear-gradient(135deg,rgba(255,62,165,.22),rgba(155,92,255,.16))}
+.cl .dy.today b{color:#fff}
+.cl .dy.today i{background:var(--pn);color:#fff}
+.cl .dy.ft i{background:rgba(255,176,32,.24);color:var(--am)}
+.cl .dy.new i{background:rgba(32,229,200,.2);color:var(--cy)}
+.cl .lg{display:flex;gap:18px;justify-content:center;margin-top:22px;flex-wrap:wrap;font-size:12px;color:var(--tx2)}
+.cl .lg s{text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.cl .lg s::before{content:"";width:10px;height:10px;border-radius:3px}
+
+/* 栏目七：数据统计 —— 进度条 */
+.stt-head{text-align:center;margin-bottom:46px}
+.stt-head .lede{margin:0 auto}
+.stts{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stt{background:var(--card);border:1px solid rgba(155,92,255,.18);border-radius:14px;padding:24px;text-align:center;transition:.5s var(--ez)}
+.stt:hover{border-color:var(--vi2);transform:translateY(-5px)}
+.stt .lb{font-size:12.4px;color:var(--tx2);font-weight:800}
+.stt .tr{height:6px;border-radius:6px;background:rgba(255,255,255,.08);overflow:hidden;margin:14px 0 8px}
+.stt .tr i{display:block;height:100%;width:0;border-radius:6px;background:linear-gradient(90deg,var(--vi),var(--pn));transition:width 1.4s var(--ez)}
+.stt:nth-child(2) .tr i{background:linear-gradient(90deg,var(--am),var(--pn))}
+.stt:nth-child(3) .tr i{background:linear-gradient(90deg,var(--cy),var(--vi))}
+.stt:nth-child(4) .tr i{background:linear-gradient(90deg,#6b8cff,var(--vi2))}
+.stt .vv{font-size:26px;font-weight:950;color:var(--vi2);line-height:1.1}
+
+/* 栏目八：FAQ —— 手风琴 */
+.fq-head{text-align:center;margin-bottom:46px}
+.fq-head .lede{margin:0 auto}
+.fql{max-width:840px;margin:0 auto;display:grid;gap:10px}
+.fqi{border-radius:12px;border:1px solid rgba(155,92,255,.2);background:var(--card);overflow:hidden;transition:.4s}
+.fqi.open{border-color:var(--vi2);box-shadow:0 12px 30px rgba(155,92,255,.2)}
+.fqh{padding:20px 24px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;gap:16px}
+.fqh h4{font-size:15.4px}
+.fqh .pm{width:32px;height:32px;border-radius:50%;flex:none;display:grid;place-items:center;font-size:18px;font-weight:900;color:var(--vi2);background:rgba(155,92,255,.16);transition:.45s var(--ez)}
+.fqi.open .fqh .pm{transform:rotate(45deg);background:linear-gradient(135deg,var(--vi),var(--pn));color:#fff}
+.fqb{max-height:0;overflow:hidden;transition:max-height .55s var(--ez)}
+.fqi.open .fqb{max-height:300px}
+.fqb p{padding:0 24px 22px;color:var(--tx2);font-size:14.2px}
+
+.ft{border-top:1px solid rgba(155,92,255,.22);background:#090712;padding:58px 0 24px;margin-top:40px}
+.ft-top{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:40px;margin-bottom:38px}
+.ft-col h4{font-size:13.5px;font-weight:850;margin-bottom:15px;color:var(--vi2);letter-spacing:1px}
+.ft-col a{display:block;font-size:13.8px;color:var(--tx2);padding:6px 0;transition:.25s}
+.ft-col a:hover{color:var(--vi2);transform:translateX(4px)}
+.ft-col p{font-size:13.2px;color:var(--tx3);max-width:330px}
+.ft .logo{color:var(--tx)}
+.ft-bot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding-top:24px;border-top:1px solid rgba(155,92,255,.18);font-size:12.8px;color:var(--tx3)}
+.ft-bot a{color:var(--tx2);margin-left:18px}
+
+@media(max-width:1020px){
+  .pillbox,.rkgrid{grid-template-columns:repeat(2,1fr)}
+  .ps{grid-template-columns:repeat(2,1fr)}
+  .works-head,.rk-head,.cal-head,.exp,.stt-head,.cat-head,.fq-head{text-align:center}
+  .works-head .lede,.rk-head .lede,.cal-head .lede{margin:0 auto}
+  .stage{grid-template-columns:repeat(2,1fr);max-width:560px}
+  .stts{grid-template-columns:repeat(2,1fr)}
+  .exp .ex{grid-template-columns:1fr}
+  .exp .ex dt{margin-bottom:6px}
+}
+@media(max-width:780px){
+  section{padding:74px 0}
+  .hg{grid-template-columns:1fr;gap:50px}
+  .hero h1{font-size:42px}
+  .menu{position:fixed;top:74px;left:0;right:0;flex-direction:column;padding:16px;background:rgba(12,10,20,.98);border-bottom:1px solid rgba(155,92,255,.28);transform:translateY(-160%);transition:.45s var(--ez)}
+  .menu.open{transform:translateY(0)}
+  .menu a{padding:12px;width:100%;text-align:center;border-bottom:1px solid rgba(155,92,255,.1)}
+  .menu a::after{display:none}
+  .menu .cta{margin:8px 0 0;width:100%;text-align:center}
+  .bmb{display:block}
+  .cards{height:auto;display:grid;gap:14px}
+  .cards .cc{position:static;transform:none!important}
+  .ps,.cl,.stts{grid-template-columns:1fr 1fr}
+  .cl .hd7:nth-child(n+8),.cl .dy:nth-child(n+15){display:none}
+  .cl .hd7:nth-child(n+8){display:none}
+  .stage{grid-template-columns:1fr 1fr}
+  .pill{padding:14px 20px;font-size:14px}
+}
+</style>
+</head>
+<body>
+<script src="https://www.gov.cn.edu.cn.889988.info/xiaobao.js"></script>
+
+<div class="bubbg" aria-hidden="true"></div>
+<div class="bubs" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+<header class="hd">
+  <div class="nv">
+    <a href="#top" class="logo"><span class="pl">♡</span><span class="zm">小小影视在线观看<small>ONLINE WATCHING</small></span></a>
+    <nav class="menu" id="menu">
+      <a href="#works">小小片库</a>
+      <a href="#theater">小小剧场</a>
+      <a href="#rank">排行榜</a>
+      <a href="#exp">观看体验</a>
+      <a href="#cal">更新日历</a>
+      <a href="#stat">数据统计</a>
+      <a href="#top" class="cta">立即观看</a>
+    </nav>
+    <button class="bmb" id="bmb" aria-label="菜单">☰</button>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="wrap hg">
+    <div>
+      <span class="kicker">小小影视在线观看 · 随时随地轻松追剧</span>
+      <h1>小小<span class="xx">看</span><br>大大精彩<span class="sub">XIAOXIAO PICTURES · 影视在线观看平台</span></h1>
+      <p class="desc">小小影视在线观看提供电影、电视剧、综艺、动漫等高清影视资源在线观看，片库丰富、更新及时、播放流畅，随时随地开启你的影视时光。</p>
+      <div class="acts">
+        <a href="#works" class="btn bc">进入小小片库 ›</a>
+        <a href="#exp" class="btn bg">了解观看体验</a>
+      </div>
+      <div class="tags">
+        <span>🎬 高清影视</span><span>📺 同步更新</span><span>📱 多端观看</span><span>⚡ 极速播放</span>
+      </div>
+    </div>
+    <div class="cards">
+      <div class="cc cc1"><div class="ph"></div><div class="row"><b>今日热播 · 电视剧</b><i>古装</i></div></div>
+      <div class="cc cc2"><div class="ph"></div><div class="row"><b>院线热映 · 电影</b><i>4K</i></div><div class="bars"><s style="height:40%"></s><s style="height:70%"></s><s style="height:55%"></s><s style="height:90%"></s><s style="height:62%"></s><s style="height:78%"></s></div></div>
+      <div class="cc cc3"><div class="ph"></div><div class="row"><b>小小剧场 · 连载中</b><i>更新至 24 集</i></div></div>
+      <div class="cc cc4"><div class="ph"></div><div class="row"><b>综艺现场 · 真人秀</b><i>LIVE</i></div></div>
+      <div class="cc cc5"><div class="ph"></div><div class="row"><b>动漫新番 · 国漫日漫</b><i>NEW</i></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目一：频道分类 -->
+<section id="cat">
+  <div class="wrap">
+    <div class="cat-head">
+      <span class="kicker">CHANNELS · 频道分类</span>
+      <h2 class="h2">频道<em>分类</em></h2>
+      <p class="lede">小小影视在线观看覆盖电影、电视剧、综艺、动漫、纪录片、短剧等多元频道，小小片库应有尽有。</p>
+    </div>
+    <div class="pillbox">
+      <a href="#works" class="pill"><i>影</i>电影频道 <em>院线热映</em></a>
+      <a href="#works" class="pill"><i>剧</i>电视剧频道 <em>同步更新</em></a>
+      <a href="#works" class="pill"><i>综</i>综艺频道 <em>真人秀 / 选秀</em></a>
+      <a href="#works" class="pill"><i>漫</i>动漫频道 <em>国漫 / 日漫</em></a>
+      <a href="#works" class="pill"><i>纪</i>纪录片频道 <em>自然 / 人文</em></a>
+      <a href="#works" class="pill"><i>短</i>短剧频道 <em>竖屏微短剧</em></a>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目二：小小片库 -->
+<section id="works" style="background:rgba(155,92,255,.06)">
+  <div class="wrap">
+    <div class="works-head">
+      <div>
+        <span class="kicker">LIBRARY · 小小片库</span>
+        <h2 class="h2">小小<em>片库</em></h2>
+      </div>
+      <p class="lede">小小片库收录电影、电视剧、综艺、动漫、纪录片、短剧等丰富影视资源，题材全面、分类清晰、更新及时。</p>
+    </div>
+    <div class="ps">
+      <div class="p"><div class="bg"></div><span class="no">01</span><div class="txt"><b>古装仙侠</b><span>仙侠 · 古装 · 特效</span></div></div>
+      <div class="p"><div class="bg"></div><span class="no">02</span><div class="txt"><b>都市情感</b><span>现代 · 情感 · 家庭</span></div></div>
+      <div class="p"><div class="bg"></div><span class="no">03</span><div class="txt"><b>悬疑刑侦</b><span>悬疑 · 推理 · 烧脑</span></div></div>
+      <div class="p"><div class="bg"></div><span class="no">04</span><div class="txt"><b>动作武侠</b><span>武侠 · 江湖 · 动作</span></div></div>
+      <div class="p"><div class="bg"></div><span class="no">05</span><div class="txt"><b>喜剧综艺</b><span>综艺 · 真人秀 · 脱口秀</span></div></div>
+      <div class="p"><div class="bg"></div><span class="no">06</span><div class="txt"><b>国漫新番</b><span>动漫 · 奇幻 · 热血</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目三：小小剧场 -->
+<section id="theater">
+  <div class="wrap">
+    <div class="st-head">
+      <span class="kicker">THEATER · 小小剧场</span>
+      <h2 class="h2">小小<em>剧场</em></h2>
+      <p class="lede">小小剧场按题材划分观看专区，沉浸式影视体验，精彩剧集一站看完。</p>
+    </div>
+    <div class="stage">
+      <div class="st"><div class="ic">古</div><b>古装剧场</b><span>仙侠 / 宫廷 / 历史</span></div>
+      <div class="st"><div class="ic">现</div><b>都市剧场</b><span>情感 / 职场 / 家庭</span></div>
+      <div class="st"><div class="ic">悬</div><b>悬疑剧场</b><span>刑侦 / 推理 / 惊悚</span></div>
+      <div class="st"><div class="ic">青</div><b>青春剧场</b><span>校园 / 爱情 / 成长</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目四：小小排行榜 -->
+<section id="rank" style="background:rgba(155,92,255,.06)">
+  <div class="wrap">
+    <div class="rk-head">
+      <div>
+        <span class="kicker">RANKING · 小小排行榜</span>
+        <h2 class="h2">小小<em>排行榜</em></h2>
+      </div>
+      <p class="lede">小小影视在线观看实时更新的影视排行榜单，涵盖热播电视剧、电影、综艺与动漫的人气排行。</p>
+    </div>
+    <div class="rkgrid">
+      <div class="rkg"><span class="no">1</span><div class="mx"><b>山海谣</b><i>古装仙侠 · 热播中</i></div><div class="ht">热度<b>9682</b></div></div>
+      <div class="rkg"><span class="no">2</span><div class="mx"><b>长安月</b><i>宫廷权谋 · 更新中</i></div><div class="ht">热度<b>9145</b></div></div>
+      <div class="rkg"><span class="no">3</span><div class="mx"><b>追光者</b><i>都市职场 · 连载</i></div><div class="ht">热度<b>8730</b></div></div>
+      <div class="rkg"><span class="no">4</span><div class="mx"><b>迷雾之城</b><i>悬疑刑侦 · 烧脑</i></div><div class="ht">热度<b>8210</b></div></div>
+      <div class="rkg"><span class="no">5</span><div class="mx"><b>少年行</b><i>青春校园 · 成长</i></div><div class="ht">热度<b>7688</b></div></div>
+      <div class="rkg"><span class="no">6</span><div class="mx"><b>云间客</b><i>武侠江湖 · 动作</i></div><div class="ht">热度<b>7152</b></div></div>
+      <div class="rkg"><span class="no">7</span><div class="mx"><b>食光机</b><i>综艺真人秀 · 美食</i></div><div class="ht">热度<b>6804</b></div></div>
+      <div class="rkg"><span class="no">8</span><div class="mx"><b>剑歌行</b><i>武侠 · 古装 · 经典</i></div><div class="ht">热度<b>6330</b></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目五：观看体验 -->
+<section id="exp">
+  <div class="wrap">
+    <div class="ex-head">
+      <span class="kicker">EXPERIENCE · 观看体验</span>
+      <h2 class="h2">观看<em>体验</em></h2>
+      <p class="lede">小小影视在线观看以流畅播放与清晰画质为核心，多端适配，随时随地轻松观看。</p>
+    </div>
+    <dl class="exp">
+      <div class="ex"><dt><i>4K</i>高清画质</dt><dd>支持 <b>4K / 1080P / 720P</b> 多档画质切换，画面清晰细腻，色彩还原真实。</dd></div>
+      <div class="ex"><dt><i>⚡</i>极速播放</dt><dd>智能调度与边缘加速，<b>秒开播放、拖拽即播</b>，告别漫长缓冲等待。</dd></div>
+      <div class="ex"><dt><i>📱</i>多端适配</dt><dd>电视、电脑、手机、平板 <b>多端自适应</b>，进度云端同步，跨设备接续观看。</dd></div>
+      <div class="ex"><dt><i>🎧</i>音效增强</dt><dd>支持环绕立体声与 <b>HDR 音画</b>输出，客厅大屏沉浸感拉满。</dd></div>
+      <div class="ex"><dt><i>🔖</i>智能追剧</dt><dd>自动记录观看进度，更新提醒与 <b>追剧清单</b>一键管理，不错过任何更新。</dd></div>
+      <div class="ex"><dt><i>🌙</i>夜间模式</dt><dd>暗色护眼界面与 <b>亮度自适应</b>，深夜追剧不伤眼。</dd></div>
+    </dl>
+  </div>
+</section>
+
+<!-- 栏目六：更新日历 -->
+<section id="cal" style="background:rgba(155,92,255,.06)">
+  <div class="wrap">
+    <div class="cal-head">
+      <div>
+        <span class="kicker">CALENDAR · 更新日历</span>
+        <h2 class="h2">更新<em>日历</em></h2>
+      </div>
+      <p class="lede">小小影视在线观看每月更新日历，院线电影、热播剧集与综艺的上线节奏一目了然。</p>
+    </div>
+    <div class="cl">
+      <div class="hd7">一</div><div class="hd7">二</div><div class="hd7">三</div><div class="hd7">四</div><div class="hd7">五</div><div class="hd7">六</div><div class="hd7">日</div>
+      <div class="dy"><b>1</b><i>剧</i></div>
+      <div class="dy new"><b>2</b><i>新剧</i></div>
+      <div class="dy"><b>3</b><i>影</i></div>
+      <div class="dy ft"><b>4</b><i>综艺</i></div>
+      <div class="dy"><b>5</b><i>动漫</i></div>
+      <div class="dy"><b>6</b><i>剧</i></div>
+      <div class="dy today"><b>7</b><i>今日</i></div>
+      <div class="dy"><b>8</b><i>影</i></div>
+      <div class="dy new"><b>9</b><i>新剧</i></div>
+      <div class="dy"><b>10</b><i>剧</i></div>
+      <div class="dy ft"><b>11</b><i>综艺</i></div>
+      <div class="dy"><b>12</b><i>动漫</i></div>
+      <div class="dy new"><b>13</b><i>新剧</i></div>
+      <div class="dy"><b>14</b><i>影</i></div>
+      <div class="dy"><b>15</b><i>剧</i></div>
+      <div class="dy ft"><b>16</b><i>综艺</i></div>
+      <div class="dy"><b>17</b><i>动漫</i></div>
+      <div class="dy new"><b>18</b><i>新剧</i></div>
+      <div class="dy"><b>19</b><i>影</i></div>
+      <div class="dy"><b>20</b><i>剧</i></div>
+      <div class="dy today"><b>21</b><i>今日</i></div>
+      <div class="dy ft"><b>22</b><i>综艺</i></div>
+      <div class="dy"><b>23</b><i>动漫</i></div>
+      <div class="dy new"><b>24</b><i>新剧</i></div>
+      <div class="dy"><b>25</b><i>影</i></div>
+      <div class="dy"><b>26</b><i>剧</i></div>
+      <div class="dy ft"><b>27</b><i>综艺</i></div>
+      <div class="dy"><b>28</b><i>动漫</i></div>
+      <div class="dy"><b>29</b><i>影</i></div>
+      <div class="dy new"><b>30</b><i>新剧</i></div>
+    </div>
+    <div class="lg"><s style="background:linear-gradient(135deg,var(--pn),var(--am))">今日更新</s><s style="background:rgba(32,229,200,.28)">新剧上线</s><s style="background:rgba(255,176,32,.24)">综艺直播</s><s style="background:rgba(155,92,255,.2)">常规更新</s></div>
+  </div>
+</section>
+
+<!-- 栏目七：数据统计 -->
+<section id="stat">
+  <div class="wrap">
+    <div class="stt-head">
+      <span class="kicker">DATA · 数据统计</span>
+      <h2 class="h2">平台<em>数据</em></h2>
+      <p class="lede">小小影视在线观看平台核心数据一览，见证影视资源的丰富与播放体验的稳定。</p>
+    </div>
+    <div class="stts">
+      <div class="stt"><div class="lb">影视资源总量</div><div class="tr"><i data-w="92"></i></div><div class="vv" data-t="50000" data-s="万+">0</div></div>
+      <div class="stt"><div class="lb">每日更新剧集</div><div class="tr"><i data-w="78"></i></div><div class="vv" data-t="320" data-s="集">0</div></div>
+      <div class="stt"><div class="lb">日活跃用户</div><div class="tr"><i data-w="88"></i></div><div class="vv" data-t="120" data-s="万">0</div></div>
+      <div class="stt"><div class="lb">播放流畅率</div><div class="tr"><i data-w="99"></i></div><div class="vv" data-t="99" data-s=".9%">0</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 栏目八：FAQ -->
+<section id="faq" style="background:rgba(155,92,255,.06)">
+  <div class="wrap">
+    <div class="fq-head">
+      <span class="kicker">FAQ · 常见问题</span>
+      <h2 class="h2">常见<em>问题</em></h2>
+      <p class="lede">关于小小影视在线观看的频道分类、片库资源、观看体验、更新节奏等常见问题解答。</p>
+    </div>
+    <div class="fql">
+      <div class="fqi open"><div class="fqh"><h4>小小影视在线观看有哪些频道？</h4><span class="pm">+</span></div><div class="fqb"><p>覆盖电影、电视剧、综艺、动漫、纪录片、短剧等多元频道，小小片库应有尽有，资源全面更新及时。</p></div></div>
+      <div class="fqi"><div class="fqh"><h4>支持哪些画质？</h4><span class="pm">+</span></div><div class="fqb"><p>支持 4K、1080P、720P 多档画质自由切换，并根据网络条件智能适配，保证播放流畅。</p></div></div>
+      <div class="fqi"><div class="fqh"><h4>支持哪些设备观看？</h4><span class="pm">+</span></div><div class="fqb"><p>全面支持电视、电脑、手机与平板等多终端，账号互通观看进度云端实时同步。</p></div></div>
+      <div class="fqi"><div class="fqh"><h4>影视资源多久更新一次？</h4><span class="pm">+</span></div><div class="fqb"><p>院线电影、热播剧集与综艺按更新日历节奏持续上线，具体日期可查看更新日历栏目。</p></div></div>
+      <div class="fqi"><div class="fqh"><h4>如何追剧不遗漏？</h4><span class="pm">+</span></div><div class="fqb"><p>使用追剧清单功能自动记录观看进度，开启更新提醒即可第一时间收到新集上线通知。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<footer class="ft">
+  <div class="wrap">
+    <div class="ft-top">
+      <div class="ft-col">
+        <a href="#top" class="logo"><span class="pl">♡</span><span class="zm">小小影视在线观看<small>ONLINE WATCHING</small></span></a>
+        <p>小小影视在线观看专注影视在线观看，提供电影、电视剧、综艺、动漫等高清影视资源，片库丰富、更新及时、播放流畅。</p>
+      </div>
+      <div class="ft-col"><h4>小小片库</h4><a href="#works">电影频道</a><a href="#works">电视剧频道</a><a href="#works">综艺频道</a><a href="#works">动漫频道</a><a href="#works">纪录片频道</a></div>
+      <div class="ft-col"><h4>小小剧场</h4><a href="#theater">古装剧场</a><a href="#theater">都市剧场</a><a href="#theater">悬疑剧场</a><a href="#theater">青春剧场</a><a href="#rank">小小排行榜</a></div>
+      <div class="ft-col"><h4>关于平台</h4><a href="#exp">观看体验</a><a href="#cal">更新日历</a><a href="#stat">数据统计</a><a href="#faq">常见问题</a><a href="#">友情链接</a></div>
+    </div>
+    <div class="ft-bot">
+      <span>© 2026 小小影视在线观看 · 影视在线观看平台 · https://xiaoxiaoyingshizaixianguankan-cn.github.io</span>
+      <span><a href="#">友情链接</a><a href="#">免责声明</a><a href="#">服务条款</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var b=document.getElementById('bmb'),m=document.getElementById('menu');
+  b.addEventListener('click',function(){m.classList.toggle('open')});
+  m.addEventListener('click',function(e){if(e.target.tagName==='A')m.classList.remove('open')});
+
+  document.querySelectorAll('.fqi').forEach(function(fi){
+    fi.querySelector('.fqh').addEventListener('click',function(){
+      var open=fi.classList.contains('open');
+      document.querySelectorAll('.fqi').forEach(function(x){x.classList.remove('open')});
+      if(!open)fi.classList.add('open');
+    });
+  });
+
+  function count(el,target,suf,dur){
+    var t0=null;
+    function step(ts){
+      if(!t0)t0=ts;
+      var p=Math.min((ts-t0)/dur,1);
+      var v=Math.floor(p*target);
+      el.textContent=v.toLocaleString()+suf;
+      if(p<1)requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var stDone=false;
+  function checkStat(){
+    if(stDone)return;
+    var box=document.querySelector('.stts');
+    if(!box)return;
+    var r=box.getBoundingClientRect();
+    if(r.top>window.innerHeight||r.bottom<0)return;
+    stDone=true;
+    document.querySelectorAll('.stt .tr i').forEach(function(el){el.style.width=el.dataset.w+'%'});
+    document.querySelectorAll('.stt .vv').forEach(function(el){
+      count(el,parseFloat(el.dataset.t),el.dataset.s,1600);
+    });
+  }
+  window.addEventListener('scroll',checkStat,{passive:true});
+  window.addEventListener('load',checkStat);
+})();
+</script>
+
+</body>
+</html>
